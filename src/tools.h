@@ -1,29 +1,35 @@
-#ifndef TOOLS_H_
-#define TOOLS_H_
+
+/** @file tools.h
+ *  @author Andrey N. Zabegaev <speench@gmail.com>
+ */
+
+#ifndef _tools_h_
+#define _tools_h_
+
 #include <vector>
 #include "Eigen/Dense"
 
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
-using namespace std;
-
-class Tools {
+class Tools
+{
 public:
-  /**
-  * Constructor.
-  */
-  Tools();
 
-  /**
-  * Destructor.
-  */
-  virtual ~Tools();
+    /** @brief Constructor
+     */
+    Tools();
+    
+    /** @brief Destructor
+     */
+    virtual ~Tools();
 
-  /**
-  * A helper method to calculate RMSE.
-  */
-  VectorXd CalculateRMSE(const vector<VectorXd> &estimations, const vector<VectorXd> &ground_truth);
-
+    /** @breif A helper method to calculate RMSE
+     */
+    Eigen::VectorXd CalculateRMSE(const std::vector<Eigen::VectorXd> &estimations, const std::vector<Eigen::VectorXd> &ground_truth);
+    
+    /** @brief cut value to -pi,pi range
+     *  @param[in,out] angle value to cut
+     *  @return cutted value
+     */
+    static double &CutAngle(double &angle);
 };
 
-#endif /* TOOLS_H_ */
+#endif /* _tools_h_ */

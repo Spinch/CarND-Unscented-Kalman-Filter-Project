@@ -6,6 +6,7 @@
 #include "tools.h"
 
 using namespace std;
+using namespace Eigen;
 
 // for convenience
 using json = nlohmann::json;
@@ -112,10 +113,10 @@ int main()
 
     	  VectorXd estimate(4);
 
-    	  double p_x = ukf.x_(0);
-    	  double p_y = ukf.x_(1);
-    	  double v  = ukf.x_(2);
-    	  double yaw = ukf.x_(3);
+    	  double p_x = ukf.x()(0);
+    	  double p_y = ukf.x()(1);
+    	  double v  = ukf.x()(2);
+    	  double yaw = ukf.x()(3);
 
     	  double v1 = cos(yaw)*v;
     	  double v2 = sin(yaw)*v;
